@@ -17,13 +17,13 @@ app.use(logger())
 app.onError((err, c) =>
 	c.json(
 		{
-			success: false,
+			ok: false,
 			message: err.message || 'Internal Server Error',
 		},
 		500
 	)
 )
-app.notFound((c) => c.json({ success: false, message: 'Not Found' }, 404))
+app.notFound((c) => c.json({ ok: false, message: 'Not Found' }, 404))
 
 // Routes
 app.route('/user', userRoutes)
