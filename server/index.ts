@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { logger } from 'hono/logger'
 
 import { connectDB } from './config/db'
+import userRoutes from './routers/user.route'
 
 // Connect to MongoDB
 connectDB()
@@ -12,9 +13,19 @@ const app = new Hono().basePath('/api')
 // Middlewares
 app.use(logger())
 
+// Exception handler
+app.onError((err, c) =>
+	c.json(
+		{
+			success: false,
+			message: err.message || 'Internal Server Error',
+		},
+		500
+	)
+)
+app.notFound((c) => c.json({ success: false, message: 'Not Found' }, 404))
+
 // Routes
-app.get('/', (c) => {
-	return c.text('Hello Hono!')
-})
+app.route('/user', userRoutes)
 
 export default app
