@@ -88,11 +88,12 @@ userRoutes.post(
 			name: user.name,
 			email: user.email,
 			role: user.role,
-			exp: Math.floor(Date.now() / 1000) + 60 * 60,
+			exp: Math.floor(Date.now() / 1000) + 60 * 2,
 		}
-		const token = sign(payload, process.env.JWT_SECRET as string)
+		const token = sign(payload, process.env.JWT_SECRET!)
 
-		user.tokens.push(token)
+		// Update token in MongoDB
+		user.tokens = token
 		await user.save()
 
 		// Send response

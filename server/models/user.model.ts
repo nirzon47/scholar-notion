@@ -36,11 +36,9 @@ const userSchema = new Schema({
 		type: [Schema.Types.ObjectId],
 		ref: 'courseProgress',
 	},
-	tokens: [
-		{
-			type: String,
-		},
-	],
+	tokens: {
+		type: String,
+	},
 })
 
 export const userModel = model('user', userSchema)
