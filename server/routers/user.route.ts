@@ -138,4 +138,17 @@ userRoutes.get('/', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
 	return c.json({ ok: true, user })
 })
 
+// Delete user
+userRoutes.delete('/', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
+	const token = c.get('jwtPayload')
+
+	// Delete user in MongoDB
+	await userModel.deleteOne({ _id: token._id })
+
+	return c.json(
+		{ ok: true, message: `User ${token._id} deleted successfully` },
+		200
+	)
+})
+
 export default userRoutes
