@@ -3,6 +3,7 @@ import { logger } from 'hono/logger'
 
 import { connectDB } from './config/db'
 import userRoutes from './routers/user.route'
+import profileRoutes from './routers/profile.route'
 
 // Connect to MongoDB
 connectDB()
@@ -27,5 +28,6 @@ app.notFound((c) => c.json({ ok: false, message: 'Not Found' }, 404))
 
 // Routes
 app.route('/user', userRoutes)
+app.route('/user/profile', profileRoutes)
 
 export default app

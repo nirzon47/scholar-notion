@@ -14,6 +14,10 @@ const profileSchema = new Schema({
 	contactNumber: {
 		type: String,
 	},
+	user: {
+		type: Schema.Types.ObjectId,
+		ref: 'user',
+	},
 })
 
 export const profileModel = model('profile', profileSchema)
