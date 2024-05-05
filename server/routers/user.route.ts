@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
-import { z } from 'zod'
 import { zValidator } from '@hono/zod-validator'
+import { z } from 'zod'
+import { jwt } from 'hono/jwt'
 import { sign } from 'jsonwebtoken'
 
 import { userModel } from '../models/user.model'
@@ -88,7 +89,7 @@ userRoutes.post(
 			name: user.name,
 			email: user.email,
 			role: user.role,
-			exp: Math.floor(Date.now() / 1000) + 60 * 2,
+			exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 15, // 15 days
 		}
 		const token = sign(payload, process.env.JWT_SECRET!)
 
@@ -98,6 +99,30 @@ userRoutes.post(
 
 		// Send response
 		return c.json({ ok: true, token }, 200)
+	}
+)
+
+// Logout user
+userRoutes.post(
+	'/logout',
+	jwt({ secret: process.env.JWT_SECRET! }),
+	async (c) => {
+		const token = c.get('jwtPayload')
+
+		// Find user in MongoDB
+		const user = await userModel.findOne({ _id: token._id })
+
+		// Check if user exists
+		if (!user) {
+			return c.notFound()
+		}
+
+		// Update token in MongoDB
+		user.tokens = null
+		await user.save()
+
+		// Send response
+		return c.json({ ok: true, message: 'Logged out successfully' }, 200)
 	}
 )
 
