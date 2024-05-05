@@ -13,5 +13,6 @@
 		"**/next.config.mjs": true,
 		"**/next-env.d.ts": true,
 		"**/postcss.config.mjs": true
-	}
+	},
+	"cSpell.words": ["Arlecchino"]
 }
