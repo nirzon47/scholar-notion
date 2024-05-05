@@ -4,4 +4,4 @@
 
 ## Attributions
 
--  [Favicon](https://www.flaticon.com/free-icon/letter-s_6229486?term=s&page=1&position=33&origin=search&related_id=6229486)
+-  [Favicon & Logo](https://www.flaticon.com/free-icon/letter-s_6229486?term=s&page=1&position=33&origin=search&related_id=6229486)
