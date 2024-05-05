@@ -126,4 +126,16 @@ userRoutes.post(
 	}
 )
 
+// Get user
+userRoutes.get('/', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
+	const token = c.get('jwtPayload')
+
+	const user = await userModel
+		.findOne({ _id: token._id })
+		.select('-password')
+		.populate('profile courses courseProgress')
+
+	return c.json({ ok: true, user })
+})
+
 export default userRoutes
