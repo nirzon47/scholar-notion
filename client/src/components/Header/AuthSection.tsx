@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 
 // Framer motion variants for search bar
 const variants = {
@@ -24,6 +25,8 @@ const AuthSection = ({
   showSearch: boolean
   setShowSearch: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
+  const router = useRouter()
+
   // Handle form submission
   const handleFormSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -40,10 +43,18 @@ const AuthSection = ({
           showSearch ? 'hidden md:hidden' : 'flex',
         )}
       >
-        <Button variant={'outline'} className='bg-transparent'>
+        <Button
+          variant={'outline'}
+          className='bg-transparent'
+          onClick={() => router.push('/auth/login')}
+        >
           Login
         </Button>
-        <Button variant={'outline'} className='bg-transparent'>
+        <Button
+          variant={'outline'}
+          className='bg-transparent'
+          onClick={() => router.push('/auth/signup')}
+        >
           Sign Up
         </Button>
       </div>
