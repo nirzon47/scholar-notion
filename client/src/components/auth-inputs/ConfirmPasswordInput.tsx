@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-const PasswordInput = ({
+const ConfirmPasswordInput = ({
 	formData,
 	setFormData,
 }: {
@@ -9,21 +9,21 @@ const PasswordInput = ({
 	setFormData: React.Dispatch<React.SetStateAction<any>>
 }) => {
 	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setFormData({ ...formData, password: e.target.value })
+		setFormData({ ...formData, confirmPassword: e.target.value })
 	}
 
 	return (
 		<>
-			<Label htmlFor='password'>Password</Label>
+			<Label htmlFor='confirmPassword'>Confirm Password</Label>
 			<Input
-				id='password'
+				id='confirmPassword'
 				type='password'
 				required
-				placeholder='Enter password'
+				placeholder='Confirm password'
 				onChange={handlePasswordChange}
 			/>
 		</>
 	)
 }
 
-export default PasswordInput
+export default ConfirmPasswordInput

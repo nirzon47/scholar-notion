@@ -1,16 +1,12 @@
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { LoginSchema } from '@/lib/zod'
-import { z } from 'zod'
 
 const EmailInput = ({
 	formData,
 	setFormData,
 }: {
-	formData: z.infer<typeof LoginSchema>
-	setFormData: React.Dispatch<
-		React.SetStateAction<z.infer<typeof LoginSchema>>
-	>
+	formData: any
+	setFormData: React.Dispatch<React.SetStateAction<any>>
 }) => {
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData({ ...formData, email: e.target.value })
