@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { logger } from 'hono/logger'
+import { cors } from 'hono/cors'
 
 import { connectDB } from './config/db'
 import userRoutes from './routers/user.route'
@@ -12,6 +13,7 @@ connectDB()
 const app = new Hono().basePath('/api')
 
 // Middlewares
+app.use('/api/*', cors())
 app.use(logger())
 
 // Exception handler
