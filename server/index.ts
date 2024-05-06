@@ -13,8 +13,8 @@ connectDB()
 const app = new Hono().basePath('/api')
 
 // Middlewares
-app.use('/api/*', cors())
 app.use(logger())
+app.use('*', cors())
 
 // Exception handler
 app.onError((err, c) =>
