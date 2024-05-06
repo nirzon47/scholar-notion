@@ -45,14 +45,14 @@ const AuthSection = ({
 			>
 				<Button
 					variant={'outline'}
-					className='bg-transparent'
+					className='border border-white/5 bg-transparent hover:bg-yellow-300/10'
 					onClick={() => router.push('/auth/login')}
 				>
 					Login
 				</Button>
 				<Button
 					variant={'outline'}
-					className='bg-transparent'
+					className='border border-white/5 bg-transparent hover:bg-yellow-300/10'
 					onClick={() => router.push('/auth/signup')}
 				>
 					Sign Up
