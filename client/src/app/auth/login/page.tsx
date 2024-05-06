@@ -57,7 +57,7 @@ const Login = () => {
 		if (response.ok) {
 			toast({
 				title: 'Login successful',
-				description: 'You have successfully logged in.',
+				description: 'You have successfully logged in. Redirecting...',
 				duration: 3000,
 			})
 
