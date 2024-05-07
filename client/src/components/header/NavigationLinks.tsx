@@ -1,8 +1,10 @@
 'use client'
 
 import { TriangleDownIcon } from '@radix-ui/react-icons'
+import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { mobileNavOpen } from './MobileNav'
 
 const navItems = [
 	{ name: 'Home', path: '' },
@@ -13,6 +15,7 @@ const navItems = [
 
 const NavigationLinks = () => {
 	const path = usePathname().split('/')
+	const setOpen = useSetAtom(mobileNavOpen)
 
 	return (
 		<nav>
@@ -31,6 +34,7 @@ const NavigationLinks = () => {
 								<Link
 									href={`/${item.path}`}
 									className='duration-150 hover:text-primary'
+									onClick={() => setOpen(false)}
 								>
 									{item.name}
 								</Link>

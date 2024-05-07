@@ -2,12 +2,14 @@
 
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { atom, useAtom } from 'jotai'
 import NavigationLinks from './NavigationLinks'
 
+export const mobileNavOpen = atom(false)
+
 const MobileNav = () => {
-	const [open, setOpen] = useState<boolean>(false)
+	const [open, setOpen] = useAtom(mobileNavOpen)
 
 	const handleOpen = () => {
 		setOpen(!open)
@@ -32,10 +34,18 @@ const MobileNav = () => {
 				>
 					<NavigationLinks />
 					<div className='flex flex-1 flex-col justify-end gap-4 pb-16'>
-						<Link href='/auth/login' className='font-medium'>
+						<Link
+							href='/auth/login'
+							className='font-medium'
+							onClick={handleOpen}
+						>
 							Login
 						</Link>
-						<Link href='/auth/signup' className='font-medium'>
+						<Link
+							href='/auth/signup'
+							className='font-medium'
+							onClick={handleOpen}
+						>
 							Sign Up
 						</Link>
 					</div>

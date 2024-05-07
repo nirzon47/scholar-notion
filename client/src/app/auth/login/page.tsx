@@ -17,11 +17,11 @@ import { authAPI } from '../../../../api/auth'
 import { LoginSchema } from '@/lib/zod'
 import EmailInput from '@/components/auth-inputs/EmailInput'
 import PasswordInput from '@/components/auth-inputs/PasswordInput'
-import { useAtom } from 'jotai'
+import { useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const scholarToken = atomWithStorage('scholarToken', '')
+export const scholarToken = atomWithStorage('scholarToken', '')
 
 const Login = () => {
 	const { toast } = useToast()
@@ -33,7 +33,7 @@ const Login = () => {
 		password: '',
 	})
 	// Token state
-	const [_, setToken] = useAtom(scholarToken)
+	const setToken = useSetAtom(scholarToken)
 
 	// Handle form submission
 	const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
