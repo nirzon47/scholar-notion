@@ -53,7 +53,7 @@ const AuthSection = ({
 			<div
 				className={clsx(
 					'hidden gap-2',
-					token === null ? 'md:flex' : 'md:hidden',
+					decoded === null ? 'md:flex' : 'md:hidden',
 					showSearch ? 'hidden md:hidden' : 'flex',
 				)}
 			>
