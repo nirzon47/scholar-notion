@@ -20,6 +20,7 @@ import { useRouter } from 'next/navigation'
 import NameInput from '@/components/auth-inputs/NameInput'
 import ConfirmPasswordInput from '@/components/auth-inputs/ConfirmPasswordInput'
 import RoleSelect from '@/components/auth-inputs/RoleSelect'
+import Link from 'next/link'
 
 const Signup = () => {
 	const { toast } = useToast()
@@ -129,10 +130,19 @@ const Signup = () => {
 						<RoleSelect formData={formData} setFormData={setFormData} />
 					</div>
 				</CardContent>
-				<CardFooter>
+				<CardFooter className='grid gap-2'>
 					<Button type='submit' className='w-full'>
 						Sign up
 					</Button>
+					<p className='text-sm'>
+						Already have an account?{' '}
+						<Link
+							href='/auth/signup'
+							className='text-primary hover:underline'
+						>
+							Login!
+						</Link>
+					</p>
 				</CardFooter>
 			</Card>
 		</form>

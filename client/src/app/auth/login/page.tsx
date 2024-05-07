@@ -19,6 +19,7 @@ import EmailInput from '@/components/auth-inputs/EmailInput'
 import PasswordInput from '@/components/auth-inputs/PasswordInput'
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const scholarToken = atomWithStorage('scholarToken', '')
 
@@ -103,10 +104,19 @@ const Login = () => {
 						/>
 					</div>
 				</CardContent>
-				<CardFooter>
+				<CardFooter className='grid gap-2'>
 					<Button type='submit' className='w-full'>
 						Sign in
 					</Button>
+					<p className='text-sm'>
+						New here?{' '}
+						<Link
+							href='/auth/signup'
+							className='text-primary hover:underline'
+						>
+							Sign up!
+						</Link>
+					</p>
 				</CardFooter>
 			</Card>
 		</form>
