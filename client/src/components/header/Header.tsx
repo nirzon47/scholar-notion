@@ -5,15 +5,11 @@ import AuthSection from './AuthSection'
 import Logo from './Logo'
 import NavigationLinks from './NavigationLinks'
 import MobileNav from './MobileNav'
-import { useAtomValue } from 'jotai'
-import { scholarToken } from '@/app/auth/login/page'
 
 const Header = () => {
 	const [showSearch, setShowSearch] = useState<boolean>(false)
 	const [isMobile, setIsMobile] = useState<boolean>(false)
 	const [loaded, setLoaded] = useState<boolean>(false)
-
-	const token = useAtomValue(scholarToken)
 
 	useLayoutEffect(() => {
 		const handleResize = () => {

@@ -5,6 +5,10 @@ import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
+import { useAtomValue } from 'jotai'
+import { scholarToken } from '@/app/auth/login/page'
+import { verifyToken } from '@/lib/jwt'
+import ProfileDropdown from './ProfileDropdown'
 
 // Framer motion variants for search bar
 const variants = {
@@ -27,6 +31,14 @@ const AuthSection = ({
 }) => {
 	const router = useRouter()
 
+	// Take token from Jotai
+	const token = useAtomValue(scholarToken)
+	// Verify token
+	let decoded = verifyToken(token)
+	if (decoded instanceof Error) {
+		decoded = null
+	}
+
 	// Handle form submission
 	const handleFormSubmission = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -39,7 +51,8 @@ const AuthSection = ({
 			{/* Login and sign up buttons */}
 			<div
 				className={clsx(
-					'hidden gap-2 md:flex',
+					'hidden gap-2',
+					token === null ? 'md:flex' : 'md:hidden',
 					showSearch ? 'hidden md:hidden' : 'flex',
 				)}
 			>
@@ -58,6 +71,7 @@ const AuthSection = ({
 					Sign Up
 				</Button>
 			</div>
+
 			{/* Search bar */}
 			<form className='relative h-8 min-w-8' onSubmit={handleFormSubmission}>
 				<motion.div
@@ -83,6 +97,11 @@ const AuthSection = ({
 					<MagnifyingGlassIcon />
 				</button>
 			</form>
+
+			{
+				/* Profile dropdown */
+				decoded !== null && <ProfileDropdown user={decoded} />
+			}
 		</div>
 	)
 }
