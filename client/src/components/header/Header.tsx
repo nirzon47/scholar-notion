@@ -22,7 +22,7 @@ const Header = () => {
 	}, [])
 
 	return (
-		<div className='sticky top-0 z-50 h-14 bg-secondary'>
+		<div className='sticky top-0 z-50 h-14 bg-[#292524]'>
 			<div className='mx-auto flex h-full max-w-7xl items-center justify-between px-4'>
 				<div className='flex items-center gap-4'>
 					{isMobile && <MobileNav />}

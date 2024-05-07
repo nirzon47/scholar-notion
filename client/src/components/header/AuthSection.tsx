@@ -45,14 +45,14 @@ const AuthSection = ({
 			>
 				<Button
 					variant={'outline'}
-					className='border border-white/5 bg-transparent hover:bg-yellow-300/10'
+					className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
 					onClick={() => router.push('/auth/login')}
 				>
 					Login
 				</Button>
 				<Button
 					variant={'outline'}
-					className='border border-white/5 bg-transparent hover:bg-yellow-300/10'
+					className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
 					onClick={() => router.push('/auth/signup')}
 				>
 					Sign Up
@@ -78,7 +78,7 @@ const AuthSection = ({
 				</motion.div>
 				<button
 					type='submit'
-					className='absolute right-0 top-0 grid h-9 w-9 cursor-pointer place-content-center rounded-full border bg-black bg-opacity-20 duration-150 hover:bg-opacity-40'
+					className='absolute right-0 top-0 grid h-9 w-9 cursor-pointer place-content-center rounded-full border-border bg-black bg-opacity-20 duration-150 hover:bg-opacity-40 '
 				>
 					<MagnifyingGlassIcon />
 				</button>
