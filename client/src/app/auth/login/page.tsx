@@ -12,7 +12,6 @@ import {
 import { useToast } from '@/components/ui/use-toast'
 import { useState } from 'react'
 import { z } from 'zod'
-import { atomWithStorage } from 'jotai/utils'
 import { authAPI } from '../../../../api/auth'
 import { LoginSchema } from '@/lib/zod'
 import EmailInput from '@/components/auth-inputs/EmailInput'
@@ -20,8 +19,7 @@ import PasswordInput from '@/components/auth-inputs/PasswordInput'
 import { useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-
-export const scholarToken = atomWithStorage('scholarToken', '')
+import { scholarToken } from '@/components/header/Header'
 
 const Login = () => {
 	const { toast } = useToast()

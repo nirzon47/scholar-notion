@@ -5,6 +5,9 @@ import AuthSection from './AuthSection'
 import Logo from './Logo'
 import NavigationLinks from './NavigationLinks'
 import MobileNav from './MobileNav'
+import { atomWithStorage } from 'jotai/utils'
+
+export const scholarToken = atomWithStorage('scholarToken', '')
 
 const Header = () => {
 	const [showSearch, setShowSearch] = useState<boolean>(false)

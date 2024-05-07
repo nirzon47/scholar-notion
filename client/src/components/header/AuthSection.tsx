@@ -6,9 +6,10 @@ import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useAtomValue } from 'jotai'
-import { scholarToken } from '@/app/auth/login/page'
+
 import { verifyToken } from '@/lib/jwt'
 import ProfileDropdown from './ProfileDropdown'
+import { scholarToken } from './Header'
 
 // Framer motion variants for search bar
 const variants = {
