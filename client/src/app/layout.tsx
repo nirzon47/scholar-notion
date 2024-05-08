@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { Provider } from 'jotai'
 import Header from '@/components/header/Header'
 import './globals.css'
+import Footer from '@/components/footer/Footer'
 
 export const metadata: Metadata = {
 	title: { template: '%s | ScholarNation', default: 'ScholarNation' },
@@ -25,6 +26,7 @@ export default function RootLayout({
 				<Provider>
 					<Header />
 					{children}
+					<Footer />
 				</Provider>
 				<Toaster />
 			</body>
