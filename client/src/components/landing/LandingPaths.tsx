@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 const LandingPaths = () => {
 	return (
-		<div className='relative grid h-[calc(100vh-3.5rem)] place-content-center'>
+		<div className='relative grid min-h-[calc(100vh-3.5rem)] place-content-center p-4'>
 			<Image
 				src={'/waves.svg'}
 				alt='waves'

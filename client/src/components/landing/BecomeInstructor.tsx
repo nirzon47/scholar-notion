@@ -21,9 +21,9 @@ const BecomeInstructor = () => {
 					alt='Instructor'
 					width={500}
 					height={500}
-					className='h-3/5 w-auto shadow-[7px_7px_0px_0px_#22d3ee]'
+					className='hidden h-3/5 w-auto shadow-[7px_7px_0px_0px_#22d3ee] md:inline-block'
 				/>
-				<div className='flex flex-col items-end justify-end text-right'>
+				<div className='flex flex-col items-end justify-end p-4 text-right'>
 					<h3 className='text-3xl font-bold'>
 						Become an <GradientText text={'Instructor'} />
 					</h3>
