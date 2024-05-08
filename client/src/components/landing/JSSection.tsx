@@ -13,7 +13,7 @@ const JSSection = () => {
 			<div className='flex h-[50vh] items-center bg-zinc-900 p-6 md:p-12'>
 				<TypeAnimation
 					sequence={[
-						'<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8" />\n\t<title>Document</title>\n</head>\n<body>\n\t<h1>Hello World!</h1>\n\t<p>Lorem Ipsum</p>\n</body>\n</html>',
+						'const button = document.getElementById("button")\n\nbutton.addEventListener("click", () => {\n\talert("Hello World!")\n})',
 					]}
 					className='whitespace-pre font-mono text-green-400 drop-shadow'
 				/>
