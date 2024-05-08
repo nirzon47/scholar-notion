@@ -1,5 +1,8 @@
 import GradientText from '@/components/GradientText'
+import CSSSection from '@/components/landing/CSSSection'
+import HTMLSection from '@/components/landing/HTMLSection'
 import InstructorButton from '@/components/landing/InstructorButton'
+import JSSection from '@/components/landing/JSSection'
 import LandingButtonGroup from '@/components/landing/LandingButtonGroup'
 
 const Home = () => {
@@ -8,7 +11,7 @@ const Home = () => {
 
 	return (
 		<div>
-			<div
+			<main
 				style={{
 					backgroundImage: `url('/landing/landing-${random}.webp')`,
 				}}
@@ -29,7 +32,10 @@ const Home = () => {
 					</p>
 					<LandingButtonGroup />
 				</div>
-			</div>
+			</main>
+			<HTMLSection />
+			<CSSSection />
+			<JSSection />
 		</div>
 	)
 }

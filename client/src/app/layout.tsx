@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import { Toaster } from '@/components/ui/toaster'
 import { Provider } from 'jotai'
 import Header from '@/components/header/Header'
@@ -16,7 +17,10 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en' className={`${GeistSans.variable} dark`}>
+		<html
+			lang='en'
+			className={`${GeistSans.variable} ${GeistMono.variable} dark`}
+		>
 			<body className='relative flex min-h-screen w-screen flex-col font-sans'>
 				<Provider>
 					<Header />
