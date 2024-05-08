@@ -26,7 +26,7 @@ const signup = async (
 ) => {
 	try {
 		const { data } = await axios.post(
-			`${process.env.NEXT_PUBLIC_BASE_URL}/user/signup`,
+			`${process.env.NEXT_PUBLIC_BASE_URL}/user/register`,
 			{
 				name,
 				email,
