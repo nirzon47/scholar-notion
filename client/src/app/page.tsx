@@ -3,10 +3,18 @@ import InstructorButton from '@/components/landing/InstructorButton'
 import LandingButtonGroup from '@/components/landing/LandingButtonGroup'
 
 const Home = () => {
+	// Random image
+	const random = Math.floor(Math.random() * 5) + 1
+
 	return (
 		<div>
-			<div className="relative grid h-[calc(100vh-3.5rem)] w-full place-content-center bg-[url('/landing.webp')] bg-center object-cover">
-				<div className='absolute inset-0 bg-black opacity-75'></div>
+			<div
+				style={{
+					backgroundImage: `url('/landing/landing-${random}.webp')`,
+				}}
+				className={`relative grid h-[calc(100vh-3.5rem)] w-full place-content-center bg-center object-cover`}
+			>
+				<div className='absolute inset-0 bg-black opacity-85'></div>
 				<div className='z-10 mx-auto max-w-7xl px-2'>
 					<InstructorButton />
 					<h1 className='my-12 text-center text-2xl font-bold text-white md:text-4xl'>

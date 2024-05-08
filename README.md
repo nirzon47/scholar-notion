@@ -32,3 +32,8 @@
 
 -  [Favicon & Logo](https://www.flaticon.com/free-icon/letter-s_6229486?term=s&page=1&position=33&origin=search&related_id=6229486)
 -  [Profile Picture](https://www.flaticon.com/free-icon/graduation-hat_4831234?term=scholar&page=1&position=3&origin=search&related_id=4831234)
+-  [Homepage Image 1](https://unsplash.com/photos/person-using-laptop-computers-9SoCnyQmkzI)
+-  [Homepage Image 2](https://unsplash.com/photos/black-flat-screen-computer-monitor-SyvsTmuuZyM)
+-  [Homepage Image 3](https://unsplash.com/photos/woman-in-black-and-white-jacket-sitting-in-front-of-computer-monitor-iQqRM0XJvn8)
+-  [Homepage Image 4](https://unsplash.com/photos/black-flat-screen-computer-monitor-W-LQbAUhE64)
+-  [Homepage Image 5](https://unsplash.com/photos/man-sitting-facing-monitor-k_T9Zj3SE8k)
