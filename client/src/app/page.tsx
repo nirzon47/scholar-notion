@@ -1,4 +1,5 @@
 import GradientText from '@/components/GradientText'
+import BecomeInstructor from '@/components/landing/BecomeInstructor'
 import CSSSection from '@/components/landing/CSSSection'
 import HTMLSection from '@/components/landing/HTMLSection'
 import InstructorButton from '@/components/landing/InstructorButton'
@@ -38,6 +39,7 @@ const Home = () => {
 			<CSSSection />
 			<JSSection />
 			<LandingPaths />
+			<BecomeInstructor />
 		</div>
 	)
 }

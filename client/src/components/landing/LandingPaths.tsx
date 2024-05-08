@@ -1,10 +1,12 @@
 import GradientText from '../GradientText'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Image from 'next/image'
 import FreeTabs from './tabs/FreeTabs'
 import BeginnerTabs from './tabs/BeginnerTabs'
 import PopularTabs from './tabs/PopularTabs'
 import PathsTabs from './tabs/PathsTab'
+import { Button } from '../ui/button'
+import Link from 'next/link'
 
 const LandingPaths = () => {
 	return (
@@ -15,7 +17,7 @@ const LandingPaths = () => {
 				width={1000}
 				height={250}
 				quality={100}
-				className='absolute bottom-0 -z-10 h-full w-full object-cover'
+				className='absolute bottom-0 -z-10 h-full w-full object-cover object-bottom'
 			/>
 			<div className='mx-auto max-w-5xl px-2'>
 				<h2 className='text-center text-2xl font-bold md:text-3xl'>
@@ -39,6 +41,11 @@ const LandingPaths = () => {
 					<PopularTabs />
 					<PathsTabs />
 				</Tabs>
+				<div className='flex justify-center'>
+					<Button>
+						<Link href={'/courses'}>Explore all courses</Link>
+					</Button>
+				</div>
 			</div>
 		</div>
 	)

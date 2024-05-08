@@ -37,3 +37,4 @@
 -  [Homepage Image 3](https://unsplash.com/photos/woman-in-black-and-white-jacket-sitting-in-front-of-computer-monitor-iQqRM0XJvn8)
 -  [Homepage Image 4](https://unsplash.com/photos/black-flat-screen-computer-monitor-W-LQbAUhE64)
 -  [Homepage Image 5](https://unsplash.com/photos/man-sitting-facing-monitor-k_T9Zj3SE8k)
+-  [Instructor Image](https://unsplash.com/photos/a-group-of-people-in-a-room-with-a-projector-screen-1-aA2Fadydc)
