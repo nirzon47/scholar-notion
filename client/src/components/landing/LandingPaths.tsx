@@ -41,7 +41,7 @@ const LandingPaths = () => {
 					<PopularTabs />
 					<PathsTabs />
 				</Tabs>
-				<div className='flex justify-center'>
+				<div className='mt-4 flex justify-center'>
 					<Button>
 						<Link href={'/courses'}>Explore all courses</Link>
 					</Button>

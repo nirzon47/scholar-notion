@@ -21,7 +21,9 @@ const TabItem = ({
 			onClick={() => setActiveItem(item.id)}
 		>
 			<div>
-				<h4 className='mb-4 text-xl font-semibold'>{item.title}</h4>
+				<h4 className='mb-4 text-xl font-semibold text-white'>
+					{item.title}
+				</h4>
 				<p className='font-light text-zinc-400'>{item.yap}</p>
 			</div>
 			<div className='flex justify-between text-sm'>
