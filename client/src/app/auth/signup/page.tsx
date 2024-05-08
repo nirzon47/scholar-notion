@@ -38,7 +38,6 @@ const Signup = () => {
 	// Handle form submission
 	const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		console.log(formData)
 
 		// Validate form
 		const result = SignupSchema.safeParse(formData)

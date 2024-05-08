@@ -41,4 +41,27 @@ const signup = async (
 	}
 }
 
-export const authAPI = { login, signup }
+// Logout
+const logout = async () => {
+	try {
+		// Get token from localStorage
+		const token = localStorage.getItem('scholarToken')
+		const Authorization = `Bearer ${token?.substring(1, token.length - 1)}` // Remove quotes
+
+		const { data } = await axios.post(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/user/logout`,
+			null,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const authAPI = { login, signup, logout }
