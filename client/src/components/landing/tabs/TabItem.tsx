@@ -14,9 +14,9 @@ const TabItem = ({
 	return (
 		<div
 			className={clsx(
-				'flex cursor-pointer flex-col justify-between gap-y-24 p-6 duration-150 hover:bg-slate-700',
+				'flex h-80 cursor-pointer flex-col justify-between gap-y-24 p-6 duration-150 hover:bg-slate-600',
 				activeItem === item.id && 'shadow-[7px_7px_0px_0px_#22d3ee]',
-				activeItem === item.id ? 'bg-slate-600' : 'bg-slate-900',
+				activeItem === item.id ? 'bg-slate-700' : 'bg-slate-900',
 			)}
 			onClick={() => setActiveItem(item.id)}
 		>

@@ -2,6 +2,9 @@ import GradientText from '../GradientText'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Image from 'next/image'
 import FreeTabs from './tabs/FreeTabs'
+import BeginnerTabs from './tabs/BeginnerTabs'
+import PopularTabs from './tabs/PopularTabs'
+import PathsTabs from './tabs/PathsTab'
 
 const LandingPaths = () => {
 	return (
@@ -22,7 +25,7 @@ const LandingPaths = () => {
 					Learn to build anything you can imagine
 				</p>
 				<Tabs
-					defaultValue='account'
+					defaultValue='free'
 					className='flex flex-col items-center justify-center'
 				>
 					<TabsList className='mb-6'>
@@ -32,9 +35,9 @@ const LandingPaths = () => {
 						<TabsTrigger value='paths'>Paths</TabsTrigger>
 					</TabsList>
 					<FreeTabs />
-					<TabsContent value='beginner'>HALLO :D</TabsContent>
-					<TabsContent value='popular'>HALLO :D</TabsContent>
-					<TabsContent value='paths'>HALLO :D</TabsContent>
+					<BeginnerTabs />
+					<PopularTabs />
+					<PathsTabs />
 				</Tabs>
 			</div>
 		</div>
