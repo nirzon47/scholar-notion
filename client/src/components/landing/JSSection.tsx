@@ -13,9 +13,9 @@ const JSSection = () => {
 			<div className='flex h-[50vh] items-center bg-zinc-900 p-6 md:p-12'>
 				<TypeAnimation
 					sequence={[
-						'const button = document.getElementById("button")\n\nbutton.addEventListener("click", () => {\n\talert("Hello World!")\n})',
+						'const button = document\n  .querySelector("#button")\n\nbutton\n  .addEventListener("click", \n\t() => {\n\t  alert("Hello!")\n\t}\n  )',
 					]}
-					className='whitespace-pre font-mono text-green-400 drop-shadow'
+					className='max-w-[80%] whitespace-pre font-mono text-green-400 drop-shadow md:max-w-none'
 				/>
 			</div>
 		</section>
