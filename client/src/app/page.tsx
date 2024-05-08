@@ -4,6 +4,7 @@ import HTMLSection from '@/components/landing/HTMLSection'
 import InstructorButton from '@/components/landing/InstructorButton'
 import JSSection from '@/components/landing/JSSection'
 import LandingButtonGroup from '@/components/landing/LandingButtonGroup'
+import LandingPaths from '@/components/landing/LandingPaths'
 
 const Home = () => {
 	// Random image
@@ -36,6 +37,7 @@ const Home = () => {
 			<HTMLSection />
 			<CSSSection />
 			<JSSection />
+			<LandingPaths />
 		</div>
 	)
 }
