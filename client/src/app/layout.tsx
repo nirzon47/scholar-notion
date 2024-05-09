@@ -22,10 +22,12 @@ export default function RootLayout({
 			lang='en'
 			className={`${GeistSans.variable} ${GeistMono.variable} dark`}
 		>
-			<body className='relative flex min-h-screen w-screen flex-col font-sans'>
+			<body className='font-sans'>
 				<Provider>
-					<Header />
-					{children}
+					<div className='relative flex min-h-screen w-screen flex-col '>
+						<Header />
+						{children}
+					</div>
 					<Footer />
 				</Provider>
 				<Toaster />
