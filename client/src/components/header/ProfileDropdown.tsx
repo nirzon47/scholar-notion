@@ -9,6 +9,7 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import LogoutItem from './LogoutItem'
+import Link from 'next/link'
 
 const ProfileDropdown = ({ user }: { user: any }) => {
 	return (
@@ -22,7 +23,9 @@ const ProfileDropdown = ({ user }: { user: any }) => {
 			<DropdownMenuContent>
 				<DropdownMenuLabel>Hello {user.name}!</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem>Profile</DropdownMenuItem>
+				<Link href={'/account/profile'}>
+					<DropdownMenuItem>Profile</DropdownMenuItem>
+				</Link>
 				<DropdownMenuItem>Settings</DropdownMenuItem>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem className='text-red-500'>
