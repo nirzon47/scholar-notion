@@ -133,7 +133,7 @@ userRoutes.get('/', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
 	const user = await userModel
 		.findOne({ _id: token._id })
 		.select('-password')
-		.populate('profile courses courseProgress')
+		.populate('profile')
 
 	return c.json({ ok: true, user })
 })

@@ -3,13 +3,14 @@ import { jwt } from 'hono/jwt'
 import { z } from 'zod'
 import { profileModel } from '../models/profile.model'
 import { zValidator } from '@hono/zod-validator'
+import { userModel } from '../models/user.model'
 
 const profileRoutes = new Hono()
 
 // Zod schemas
 const profileSchema = z.object({
 	gender: z.enum(['male', 'female', 'other']).optional(),
-	dob: z.date().optional(),
+	dob: z.string().optional(),
 	about: z.string().optional(),
 	contactNumber: z.string().optional(),
 })
@@ -34,6 +35,16 @@ profileRoutes.put(
 				user: token._id,
 				...body,
 			})
+
+			await userModel.findOneAndUpdate(
+				{ _id: token._id },
+				{
+					$set: {
+						profile: updatedProfile._id,
+					},
+				},
+				{ new: true }
+			)
 		} else {
 			updatedProfile = await profileModel.findOneAndUpdate(
 				{ user: token._id },
