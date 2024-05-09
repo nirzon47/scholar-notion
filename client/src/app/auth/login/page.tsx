@@ -81,7 +81,7 @@ const Login = () => {
 
 	return (
 		<form
-			className='grid flex-1 place-content-center px-2'
+			className='grid flex-1 place-content-center p-2'
 			onSubmit={handleFormSubmission}
 		>
 			<Card className='w-full max-w-sm'>

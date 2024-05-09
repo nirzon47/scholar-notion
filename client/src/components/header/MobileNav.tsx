@@ -33,7 +33,7 @@ const MobileNav = () => {
 					transition={{ duration: 0.1 }}
 				>
 					<NavigationLinks />
-					<div className='flex flex-1 flex-col justify-end gap-4 pb-16'>
+					<div className='flex flex-1 flex-col justify-end gap-4 pb-32'>
 						<Link
 							href='/auth/login'
 							className='font-medium'
