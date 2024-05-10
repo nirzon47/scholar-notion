@@ -19,9 +19,11 @@ import PasswordInput from '@/components/auth-inputs/PasswordInput'
 import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { tokenAtom } from '@/lib/atoms'
+import Loading from '@/components/Loading'
 
 const Login = () => {
 	const { toast } = useToast()
+	const [loading, setLoading] = useState(false)
 
 	// Form state
 	const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({
@@ -34,6 +36,7 @@ const Login = () => {
 	// Handle form submission
 	const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		setLoading(true)
 
 		// Validate form
 		const result = LoginSchema.safeParse(formData)
@@ -69,6 +72,8 @@ const Login = () => {
 			return
 		}
 
+		setLoading(false)
+
 		// Handle error
 		toast({
 			title: 'Login failed',
@@ -90,6 +95,7 @@ const Login = () => {
 					</CardDescription>
 				</CardHeader>
 				<CardContent className='grid gap-4'>
+					{loading && <Loading />}
 					<div className='grid gap-2'>
 						<EmailInput formData={formData} setFormData={setFormData} />
 					</div>

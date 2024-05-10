@@ -21,10 +21,12 @@ import NameInput from '@/components/auth-inputs/NameInput'
 import ConfirmPasswordInput from '@/components/auth-inputs/ConfirmPasswordInput'
 import RoleSelect from '@/components/auth-inputs/RoleSelect'
 import Link from 'next/link'
+import Loading from '@/components/Loading'
 
 const Signup = () => {
 	const { toast } = useToast()
 	const router = useRouter()
+	const [loading, setLoading] = useState(false)
 
 	// Form state
 	const [formData, setFormData] = useState<z.infer<typeof SignupSchema>>({
@@ -38,6 +40,8 @@ const Signup = () => {
 	// Handle form submission
 	const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+
+		setLoading(true)
 
 		// Validate form
 		const result = SignupSchema.safeParse(formData)
@@ -90,6 +94,8 @@ const Signup = () => {
 			description: 'Please check your details and try again.',
 			variant: 'destructive',
 		})
+
+		setLoading(false)
 	}
 
 	return (
@@ -105,6 +111,7 @@ const Signup = () => {
 					</CardDescription>
 				</CardHeader>
 				<CardContent className='grid gap-4'>
+					{loading && <Loading />}
 					<div className='grid gap-2'>
 						<NameInput formData={formData} setFormData={setFormData} />
 					</div>
