@@ -17,13 +17,11 @@ import { LoginSchema } from '@/lib/zod'
 import EmailInput from '@/components/auth-inputs/EmailInput'
 import PasswordInput from '@/components/auth-inputs/PasswordInput'
 import { useSetAtom } from 'jotai'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { scholarToken } from '@/components/header/Header'
+import { tokenAtom } from '@/lib/atoms'
 
 const Login = () => {
 	const { toast } = useToast()
-	const router = useRouter()
 
 	// Form state
 	const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({
@@ -31,7 +29,7 @@ const Login = () => {
 		password: '',
 	})
 	// Token state
-	const setToken = useSetAtom(scholarToken)
+	const setToken = useSetAtom(tokenAtom)
 
 	// Handle form submission
 	const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,7 +62,7 @@ const Login = () => {
 			setFormData({ email: '', password: '' })
 
 			setTimeout(() => {
-				router.push('/')
+				window.location.replace('/')
 			}, 3_000)
 
 			setToken(response.token)

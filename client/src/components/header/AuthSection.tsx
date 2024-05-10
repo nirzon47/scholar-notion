@@ -9,7 +9,8 @@ import { useAtomValue } from 'jotai'
 
 import { verifyToken } from '@/lib/jwt'
 import ProfileDropdown from './ProfileDropdown'
-import { scholarToken } from '@/lib/atoms'
+import { tokenAtom } from '@/lib/atoms'
+import { useEffect, useState } from 'react'
 
 // Framer motion variants for search bar
 const variants = {
@@ -31,14 +32,10 @@ const AuthSection = ({
 	setShowSearch: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
 	const router = useRouter()
+	const [decoded, setDecoded] = useState<any>(null)
 
 	// Take token from Jotai
-	const token = useAtomValue(scholarToken)
-	// Verify token
-	let decoded = verifyToken(token)
-	if (decoded instanceof Error) {
-		decoded = null
-	}
+	const token = useAtomValue(tokenAtom)
 
 	// Handle form submission
 	const handleFormSubmission = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,31 +44,42 @@ const AuthSection = ({
 		setShowSearch(!showSearch)
 	}
 
+	useEffect(() => {
+		// Verify token
+		let decodedToken = verifyToken(token as string)
+		if (decodedToken instanceof Error) {
+			decodedToken = null
+		}
+
+		setDecoded(decodedToken)
+	}, [token])
+
 	return (
 		<div className='flex items-center gap-4 text-white'>
 			{/* Login and sign up buttons */}
-			<div
-				className={clsx(
-					'hidden gap-2',
-					decoded === null ? 'md:flex' : 'md:hidden',
-					showSearch ? 'hidden md:hidden' : 'flex',
-				)}
-			>
-				<Button
-					variant={'outline'}
-					className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
-					onClick={() => router.push('/auth/login')}
+			{!decoded && (
+				<div
+					className={clsx(
+						'hidden gap-2 md:flex',
+						showSearch && 'md:hidden',
+					)}
 				>
-					Login
-				</Button>
-				<Button
-					variant={'outline'}
-					className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
-					onClick={() => router.push('/auth/signup')}
-				>
-					Sign Up
-				</Button>
-			</div>
+					<Button
+						variant={'outline'}
+						className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
+						onClick={() => router.push('/auth/login')}
+					>
+						Login
+					</Button>
+					<Button
+						variant={'outline'}
+						className='border border-white/5 bg-transparent hover:bg-yellow-300/10 hover:text-white'
+						onClick={() => router.push('/auth/signup')}
+					>
+						Sign Up
+					</Button>
+				</div>
+			)}
 
 			{/* Search bar */}
 			<form className='relative h-8 min-w-8' onSubmit={handleFormSubmission}>

@@ -1,15 +1,13 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { authAPI } from '../../../api/auth'
 import { useToast } from '../ui/use-toast'
 import { useSetAtom } from 'jotai'
-import { scholarToken } from '@/lib/atoms'
+import { tokenAtom } from '@/lib/atoms'
 
 const LogoutItem = () => {
 	const { toast } = useToast()
-	const router = useRouter()
-	const setToken = useSetAtom(scholarToken)
+	const setToken = useSetAtom(tokenAtom)
 
 	const handleLogout = async () => {
 		// Call logout API
@@ -24,7 +22,7 @@ const LogoutItem = () => {
 
 			setToken('')
 
-			router.push('/')
+			window.location.replace('/')
 		} else {
 			toast({
 				title: 'Logout failed',

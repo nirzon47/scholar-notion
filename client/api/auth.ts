@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 // Login API
 const login = async (email: string, password: string) => {
@@ -44,9 +45,9 @@ const signup = async (
 // Logout
 const logout = async () => {
 	try {
-		// Get token from localStorage
-		const token = localStorage.getItem('scholarToken')
-		const Authorization = `Bearer ${token?.substring(1, token.length - 1)}` // Remove quotes
+		// Get token from cookies
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
 
 		const { data } = await axios.post(
 			`${process.env.NEXT_PUBLIC_BASE_URL}/user/logout`,
@@ -57,6 +58,8 @@ const logout = async () => {
 				},
 			},
 		)
+
+		Cookies.remove('scholarToken')
 
 		return data
 	} catch (error) {

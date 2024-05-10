@@ -1,9 +1,11 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 const getProfile = async () => {
 	try {
-		const token = localStorage.getItem('scholarToken')
-		const Authorization = `Bearer ${token?.substring(1, token.length - 1)}` // Remove quotes
+		// Get token from cookies
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
 
 		const { data } = await axios.get(
 			`${process.env.NEXT_PUBLIC_BASE_URL}/user`,
@@ -24,8 +26,9 @@ const getProfile = async () => {
 
 const updateProfile = async ({ changes }: { changes: any }) => {
 	try {
-		const token = localStorage.getItem('scholarToken')
-		const Authorization = `Bearer ${token?.substring(1, token.length - 1)}` // Remove quotes
+		// Get token from cookies
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
 
 		const { data } = await axios.put(
 			`${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`,
