@@ -22,3 +22,9 @@ export const SignupSchema = z
 			})
 		}
 	})
+
+export const ContactUsSchema = z.object({
+	name: z.string(),
+	email: z.string().email(),
+	message: z.string(),
+})

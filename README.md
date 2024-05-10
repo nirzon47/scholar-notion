@@ -38,3 +38,7 @@
 -  [Homepage Image 4](https://unsplash.com/photos/black-flat-screen-computer-monitor-W-LQbAUhE64)
 -  [Homepage Image 5](https://unsplash.com/photos/man-sitting-facing-monitor-k_T9Zj3SE8k)
 -  [Instructor Image](https://unsplash.com/photos/a-group-of-people-in-a-room-with-a-projector-screen-1-aA2Fadydc)
+-  [About Image 1](https://unsplash.com/photos/woman-in-black-and-white-shirt-writing-on-white-paper-ddwbTn5HDdQ)
+-  [About Image 2](https://unsplash.com/photos/man-wearing-headphones-while-sitting-on-chair-in-front-of-macbook-4-EeTnaC1S4)
+-  [About Image 3](https://unsplash.com/photos/three-people-sitting-in-front-of-table-laughing-together-g1Kr4Ozfoac)
+-  [Founding Story](https://unsplash.com/photos/ray-of-light-near-body-of-water--p-KCm6xB9I)
