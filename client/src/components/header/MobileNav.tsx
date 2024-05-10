@@ -3,13 +3,12 @@
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai'
 import NavigationLinks from './NavigationLinks'
-
-export const mobileNavOpen = atom(false)
+import { mobileNavOpenAtom } from '@/lib/atoms'
 
 const MobileNav = () => {
-	const [open, setOpen] = useAtom(mobileNavOpen)
+	const [open, setOpen] = useAtom(mobileNavOpenAtom)
 
 	const handleOpen = () => {
 		setOpen(!open)

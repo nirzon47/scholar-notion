@@ -143,7 +143,7 @@ const ProfileForm = () => {
 				id={'contactNumber'}
 				type={'number'}
 				inputMode='tel'
-				value={Number(number)}
+				value={Number(number) || ''}
 				placeholder='Enter Contact Number'
 				onChange={(e) => setNumber(e.target.value)}
 			/>

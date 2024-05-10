@@ -9,7 +9,7 @@ import { useAtomValue } from 'jotai'
 
 import { verifyToken } from '@/lib/jwt'
 import ProfileDropdown from './ProfileDropdown'
-import { scholarToken } from './Header'
+import { scholarToken } from '@/lib/atoms'
 
 // Framer motion variants for search bar
 const variants = {

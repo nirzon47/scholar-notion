@@ -4,7 +4,7 @@ import { TriangleDownIcon } from '@radix-ui/react-icons'
 import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { mobileNavOpen } from './MobileNav'
+import { mobileNavOpenAtom } from '@/lib/atoms'
 
 const navItems = [
 	{ name: 'Home', path: '' },
@@ -15,7 +15,7 @@ const navItems = [
 
 const NavigationLinks = () => {
 	const path = usePathname().split('/')
-	const setOpen = useSetAtom(mobileNavOpen)
+	const setOpen = useSetAtom(mobileNavOpenAtom)
 
 	return (
 		<nav>

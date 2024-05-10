@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { authAPI } from '../../../api/auth'
 import { useToast } from '../ui/use-toast'
 import { useSetAtom } from 'jotai'
-import { scholarToken } from './Header'
+import { scholarToken } from '@/lib/atoms'
 
 const LogoutItem = () => {
 	const { toast } = useToast()
