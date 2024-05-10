@@ -68,10 +68,10 @@ const AboutContact = () => {
 	}
 
 	return (
-		<div className='w-screen place-content-center px-2 pb-16'>
+		<div className='px-2 pb-16'>
 			<Card className='mx-auto max-w-lg'>
 				<CardHeader>
-					<CardTitle>Contact Us</CardTitle>
+					<CardTitle>Leave us a message</CardTitle>
 					<CardDescription>Get in touch with us</CardDescription>
 				</CardHeader>
 				<CardContent>
