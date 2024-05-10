@@ -20,6 +20,9 @@
 -  [shadcn/ui](https://ui.shadcn.com/): UI components
 -  [Axios](https://axios-http.com/): HTTP client
 -  [jwt-decode](https://www.npmjs.com/package/jwt-decode): JWT decoder
+-  [Js-Cookie](https://www.npmjs.com/package/js-cookie): Cookie library
+-  [Lucide Icons](https://lucide.dev/): Icon library
+-  [React Type Animation](https://www.npmjs.com/package/react-type-animation)
 
 ### Backend
 
