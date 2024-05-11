@@ -7,6 +7,7 @@ import { connectDB } from './config/db'
 import userRoutes from './routers/user.route'
 import profileRoutes from './routers/profile.route'
 import contactRoute from './routers/contact.route'
+import forgotPasswordRoutes from './routers/forgotPassword.route'
 
 // Connect to MongoDB
 connectDB()
@@ -34,5 +35,6 @@ app.notFound((c) => c.json({ ok: false, message: 'Not Found' }, 404))
 app.route('/user', userRoutes)
 app.route('/user/profile', profileRoutes)
 app.route('/contact-us', contactRoute)
+app.route('/forgot', forgotPasswordRoutes)
 
 export default app
