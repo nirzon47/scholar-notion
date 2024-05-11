@@ -3,7 +3,13 @@ import type { NextRequest } from 'next/server'
 import { verifyToken } from './lib/jwt'
 import { cookies } from 'next/headers'
 
-const publicRoutes = new Set(['/login', '/register', '/', '/about', '/wip'])
+const publicRoutes = new Set([
+	'/auth/login',
+	'/auth/register',
+	'/',
+	'/about',
+	'/wip',
+])
 const authRoutes = new Set(['/account/profile'])
 const roleRoutes: Record<string, Set<string>> = {
 	student: new Set([]),
@@ -28,7 +34,6 @@ export function middleware(request: NextRequest) {
 
 	// Check if the route is public
 	if (publicRoutes.has(pathname)) {
-		console.log('here')
 		if (
 			decoded &&
 			(pathname === '/auth/login' || pathname === '/auth/register')
