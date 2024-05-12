@@ -1,6 +1,6 @@
 import TeacherNav from '@/components/teacher/TeacherNav'
 
-const paths = ['Add Course', 'Your courses']
+const paths = ['Your courses', 'Add Course']
 
 const TeacherLayout = ({ children }: { children: React.ReactNode }) => {
 	return (

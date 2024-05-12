@@ -38,6 +38,9 @@ const YourCourses = () => {
 
 	return (
 		<>
+			{courses?.length === 0 && (
+				<p className='text-center'>No courses found</p>
+			)}
 			{loading && <Loading />}
 			<div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
 				{courses?.map((course) => (

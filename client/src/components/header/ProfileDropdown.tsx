@@ -27,7 +27,7 @@ const ProfileDropdown = ({ user }: { user: any }) => {
 					<DropdownMenuItem>Profile</DropdownMenuItem>
 				</Link>
 				{user.role === 'teacher' && (
-					<Link href={'/teacher/add-course'}>
+					<Link href={'/teacher/your-courses'}>
 						<DropdownMenuItem>Your Courses</DropdownMenuItem>
 					</Link>
 				)}
