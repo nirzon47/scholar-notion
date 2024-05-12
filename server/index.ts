@@ -9,6 +9,7 @@ import profileRoutes from './routers/profile.route'
 import contactRoute from './routers/contact.route'
 import forgotPasswordRoutes from './routers/forgotPassword.route'
 import teacherRoutes from './routers/teacher.route'
+import courseRoutes from './routers/courses.route'
 
 // Connect to MongoDB
 connectDB()
@@ -38,5 +39,6 @@ app.route('/user/profile', profileRoutes)
 app.route('/contact-us', contactRoute)
 app.route('/forgot', forgotPasswordRoutes)
 app.route('/teacher', teacherRoutes)
+app.route('/course', courseRoutes)
 
 export default app
