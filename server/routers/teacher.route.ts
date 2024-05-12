@@ -99,4 +99,25 @@ teacherRoutes.delete(
 	}
 )
 
+// Get teacher's courses
+teacherRoutes.get(
+	'/course',
+	jwt({ secret: process.env.JWT_SECRET! }),
+	async (c) => {
+		const token = c.get('jwtPayload')
+
+		// If there is a token or the user is not a teacher, return error
+		if (!token || token.role !== 'teacher') {
+			return c.json({ ok: false, message: 'Unauthorized' }, 401)
+		}
+
+		// Get teacher's courses
+		const courses = await courseModel
+			.find({ instructor: token._id })
+			.populate('students')
+
+		return c.json({ ok: true, courses }, 200)
+	}
+)
+
 export default teacherRoutes

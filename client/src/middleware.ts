@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 
 const publicRoutes = new Set([
 	'/auth/login',
-	'/auth/register',
+	'/auth/signup',
 	'/',
 	'/about',
 	'/wip',
@@ -36,7 +36,7 @@ export function middleware(request: NextRequest) {
 	if (publicRoutes.has(pathname)) {
 		if (
 			decoded &&
-			(pathname === '/auth/login' || pathname === '/auth/register')
+			(pathname === '/auth/login' || pathname === '/auth/signup')
 		) {
 			const url = request.nextUrl.clone()
 			url.pathname = '/forbidden'
@@ -75,7 +75,7 @@ export function middleware(request: NextRequest) {
 export const config = {
 	matcher: [
 		'/auth/login',
-		'/auth/register',
+		'/auth/signup',
 		'/account/profile',
 		'/teacher/add-course',
 	],
