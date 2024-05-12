@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { courseAPI } from '../../../../api/course'
+import { teacherAPI } from '../../../../api/teacher'
 import { useToast } from '@/components/ui/use-toast'
 import Loading from '@/components/Loading'
 import CourseItem from '@/components/teacher/CourseItem'
@@ -15,7 +15,7 @@ const YourCourses = () => {
 	const getCourses = useCallback(async () => {
 		setLoading(true)
 		try {
-			const response = await courseAPI.getYourCourses()
+			const response = await teacherAPI.getYourCourses()
 
 			if (response.ok) {
 				setCourses(response.courses)

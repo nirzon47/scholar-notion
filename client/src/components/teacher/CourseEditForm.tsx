@@ -6,7 +6,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
-import { courseAPI } from '../../../api/course'
+import { teacherAPI } from '../../../api/teacher'
 import { useToast } from '../ui/use-toast'
 
 const CourseEditForm = () => {
@@ -36,7 +36,7 @@ const CourseEditForm = () => {
 			}
 			const formData: any = { name, desc, tags, price, thumbnail }
 
-			const response = await courseAPI.addCourse(formData)
+			const response = await teacherAPI.addCourse(formData)
 
 			if (response.ok) {
 				setName('')
