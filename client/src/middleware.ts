@@ -78,5 +78,6 @@ export const config = {
 		'/auth/signup',
 		'/account/profile',
 		'/teacher/add-course',
+		'/teacher/view-courses',
 	],
 }

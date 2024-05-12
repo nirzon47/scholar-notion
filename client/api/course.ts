@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+// Add Course
 const addCourse = async (formData: any) => {
 	try {
 		let fileURL
@@ -67,4 +68,25 @@ const addCourse = async (formData: any) => {
 	}
 }
 
-export const courseAPI = { addCourse }
+// Get your courses
+const getYourCourses = async () => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/teacher/course`,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const courseAPI = { addCourse, getYourCourses }
