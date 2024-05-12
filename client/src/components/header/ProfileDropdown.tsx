@@ -31,7 +31,9 @@ const ProfileDropdown = ({ user }: { user: any }) => {
 						<DropdownMenuItem>Your Courses</DropdownMenuItem>
 					</Link>
 				)}
-				<DropdownMenuItem>Settings</DropdownMenuItem>
+				<Link href='/settings'>
+					<DropdownMenuItem>Settings</DropdownMenuItem>
+				</Link>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem className='text-red-500'>
 					<LogoutItem />
