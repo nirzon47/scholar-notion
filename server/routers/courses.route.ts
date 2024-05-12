@@ -1,30 +1,16 @@
 import { Hono } from 'hono'
-import { jwt } from 'hono/jwt'
 import { courseModel } from '../models/course.mode'
 
 const courseRoutes = new Hono()
 
 // Get a specific course
-courseRoutes.get(
-	'/:id',
-	jwt({ secret: process.env.JWT_SECRET! }),
-	async (c) => {
-		const token = c.get('jwtPayload')
-		const id = c.req.param('id')
+courseRoutes.get('/:id', async (c) => {
+	const id = c.req.param('id')
 
-		if (!token || token.role !== 'teacher') {
-			return c.json({ ok: false, message: 'Unauthorized' }, 401)
-		}
+	const course = await courseModel.findOne({ _id: id })
 
-		const course = await courseModel.findOne({ _id: id })
-
-		if (course?.instructor !== token._id) {
-			return c.json({ ok: false, message: 'Unauthorized' }, 401)
-		}
-
-		return c.json({ ok: true, course }, 200)
-	}
-)
+	return c.json({ ok: true, course }, 200)
+})
 
 // Get all courses
 courseRoutes.get('/', async (c) => {
