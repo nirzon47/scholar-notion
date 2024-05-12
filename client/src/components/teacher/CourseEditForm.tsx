@@ -1,24 +1,26 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
 import { teacherAPI } from '../../../api/teacher'
 import { useToast } from '../ui/use-toast'
+import { courseAPI } from '../../../api/course'
 
-const CourseEditForm = () => {
+const CourseEditForm = ({ id }: { id: string }) => {
 	const [loading, setLoading] = useState<boolean>(false)
 	// Form states
 	const [name, setName] = useState<string>('')
 	const [desc, setDesc] = useState<string>('')
 	const [tags, setTags] = useState<string>('')
-	const [price, setPrice] = useState<number | undefined>()
-	const [thumbnail, setThumbnail] = useState<File | undefined>()
+	const [price, setPrice] = useState<number>(0)
+	const [thumbnail, setThumbnail] = useState<File | null>()
 	const { toast } = useToast()
 
+	// Edit course
 	const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
@@ -36,18 +38,18 @@ const CourseEditForm = () => {
 			}
 			const formData: any = { name, desc, tags, price, thumbnail }
 
-			const response = await teacherAPI.addCourse(formData)
+			const response = await teacherAPI.editCourse(formData, id)
 
 			if (response.ok) {
 				setName('')
 				setDesc('')
 				setTags('')
-				setPrice(undefined)
-				setThumbnail(undefined)
+				setPrice(0)
+				setThumbnail(null)
 
 				toast({
 					title: 'Success',
-					description: 'Course added successfully',
+					description: 'Course edited successfully',
 				})
 			} else {
 				toast({
@@ -60,6 +62,30 @@ const CourseEditForm = () => {
 			setLoading(false)
 		}
 	}
+
+	// Get course
+	const getCourse = useCallback(async () => {
+		try {
+			setLoading(true)
+
+			const response = await courseAPI.getSpecificCourse(id)
+
+			if (response.ok) {
+				const { name, desc, tags, price, thumbnail } = response.course
+				setName(name)
+				setDesc(desc)
+				setTags(tags)
+				setPrice(price)
+				setThumbnail(thumbnail)
+			}
+		} finally {
+			setLoading(false)
+		}
+	}, [id])
+
+	useEffect(() => {
+		getCourse()
+	}, [getCourse])
 
 	return (
 		<form className='grid gap-6' onSubmit={handleFormSubmit}>
@@ -106,7 +132,7 @@ const CourseEditForm = () => {
 						id='price'
 						type='number'
 						placeholder='1000'
-						value={price}
+						value={Number(price) || ''}
 						onChange={(e) => setPrice(Number(e.target.value))}
 					/>
 				</div>

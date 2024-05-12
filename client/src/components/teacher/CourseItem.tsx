@@ -11,8 +11,9 @@ const CourseItem = ({ course }: { course: CourseType }) => {
 			<Image
 				src={course.thumbnail || '/placeholder.svg'}
 				alt={course.name}
-				width={200}
-				height={200}
+				width={600}
+				height={600}
+				quality={75}
 				className='h-32 w-full rounded-tl-xl rounded-tr-xl object-cover object-center'
 			/>
 			<CardHeader>

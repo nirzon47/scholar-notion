@@ -19,7 +19,6 @@ const YourCourses = () => {
 
 			if (response.ok) {
 				setCourses(response.courses)
-				console.log(response)
 			} else {
 				toast({
 					title: 'Error',

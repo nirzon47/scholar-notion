@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card'
 import Link from 'next/link'
 
-const CourseEdit = () => {
+const CourseEdit = ({ params }: { params: { id: string } }) => {
 	return (
 		<Card>
 			<CardHeader>
@@ -18,7 +18,7 @@ const CourseEdit = () => {
 				<CardDescription>Edit your existing course</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<CourseEditForm />
+				<CourseEditForm id={params.id} />
 				<Link
 					href='/teacher/your-courses'
 					className='mt-4 inline-block text-primary hover:underline'
