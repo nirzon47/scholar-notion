@@ -157,4 +157,30 @@ const getYourCourses = async () => {
 	}
 }
 
-export const teacherAPI = { addCourse, getYourCourses, editCourse }
+// Delete course
+const deleteCourse = async (id: string) => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.delete(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/teacher/course/${id}`,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const teacherAPI = {
+	addCourse,
+	getYourCourses,
+	editCourse,
+	deleteCourse,
+}

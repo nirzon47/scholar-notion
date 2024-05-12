@@ -9,6 +9,7 @@ import { Button } from '../ui/button'
 import { teacherAPI } from '../../../api/teacher'
 import { useToast } from '../ui/use-toast'
 import { courseAPI } from '../../../api/course'
+import DeleteButton from './DeleteButton'
 
 const CourseEditForm = ({ id }: { id: string }) => {
 	const [loading, setLoading] = useState<boolean>(false)
@@ -115,13 +116,11 @@ const CourseEditForm = ({ id }: { id: string }) => {
 			</div>
 			<div className='grid grid-cols-2 gap-4'>
 				<div className='grid gap-2'>
-					<Label htmlFor='course-desc'>
-						Tags (comma separated, do not use spaces)
-					</Label>
+					<Label htmlFor='course-desc'>Tags</Label>
 					<Input
 						id='course-desc'
 						type='text'
-						placeholder='html,web development,css'
+						placeholder='e.g., html,web development,css'
 						value={tags}
 						onChange={(e) => setTags(e.target.value)}
 					/>
@@ -145,7 +144,10 @@ const CourseEditForm = ({ id }: { id: string }) => {
 					onChange={(e) => setThumbnail(e.target.files?.[0])}
 				/>
 			</div>
-			<Button className='w-24'>Edit</Button>
+			<div className='flex justify-between'>
+				<Button className='w-24'>Edit</Button>
+				<DeleteButton id={id} />
+			</div>
 		</form>
 	)
 }
