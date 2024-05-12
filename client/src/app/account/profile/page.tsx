@@ -7,18 +7,22 @@ import {
 	CardTitle,
 } from '@/components/ui/card'
 
-const AccountLayout = () => {
+const AccountProfile = () => {
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>Profile</CardTitle>
-				<CardDescription>Update your profile information</CardDescription>
-			</CardHeader>
-			<CardContent>
-				<ProfileForm />
-			</CardContent>
-		</Card>
+		<>
+			<Card>
+				<CardHeader>
+					<CardTitle>Profile</CardTitle>
+					<CardDescription>
+						Update your profile information
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<ProfileForm />
+				</CardContent>
+			</Card>
+		</>
 	)
 }
 
-export default AccountLayout
+export default AccountProfile

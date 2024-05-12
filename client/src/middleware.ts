@@ -13,7 +13,7 @@ const publicRoutes = new Set([
 const authRoutes = new Set(['/account/profile'])
 const roleRoutes: Record<string, Set<string>> = {
 	student: new Set([]),
-	teacher: new Set([]),
+	teacher: new Set(['/teacher/add-course', '/teacher/view-courses']),
 	admin: new Set([]),
 }
 
@@ -73,5 +73,10 @@ export function middleware(request: NextRequest) {
 
 // Paths to run the middleware on
 export const config = {
-	matcher: ['/auth/login', '/auth/register', '/account/profile'],
+	matcher: [
+		'/auth/login',
+		'/auth/register',
+		'/account/profile',
+		'/teacher/add-course',
+	],
 }
