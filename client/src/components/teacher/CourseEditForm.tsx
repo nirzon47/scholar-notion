@@ -55,7 +55,7 @@ const CourseEditForm = ({ id }: { id: string }) => {
 			} else {
 				toast({
 					title: 'Error',
-					description: response.statusText,
+					description: response.message || 'Something went wrong',
 					variant: 'destructive',
 				})
 			}
@@ -77,7 +77,6 @@ const CourseEditForm = ({ id }: { id: string }) => {
 				setDesc(desc)
 				setTags(tags)
 				setPrice(price)
-				setThumbnail(thumbnail)
 			}
 		} finally {
 			setLoading(false)

@@ -75,7 +75,7 @@ const editCourse = async (formData: any, id: string) => {
 		let fileURL
 
 		// If there is a thumbnail, upload it to imgur
-		if (formData.thumbnail) {
+		if (formData.thumbnail && formData.thumbnail instanceof File) {
 			if (formData.thumbnail.size > 5 * 1024 * 1024) {
 				throw new Error('File too large')
 			}

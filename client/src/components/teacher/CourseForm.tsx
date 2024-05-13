@@ -15,8 +15,8 @@ const CourseForm = () => {
 	const [name, setName] = useState<string>('')
 	const [desc, setDesc] = useState<string>('')
 	const [tags, setTags] = useState<string>('')
-	const [price, setPrice] = useState<number | undefined>()
-	const [thumbnail, setThumbnail] = useState<File | undefined>()
+	const [price, setPrice] = useState<number>()
+	const [thumbnail, setThumbnail] = useState<File | null>()
 	const { toast } = useToast()
 
 	const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,8 +42,8 @@ const CourseForm = () => {
 				setName('')
 				setDesc('')
 				setTags('')
-				setPrice(undefined)
-				setThumbnail(undefined)
+				setPrice(0)
+				setThumbnail(null)
 
 				toast({
 					title: 'Success',
@@ -52,7 +52,7 @@ const CourseForm = () => {
 			} else {
 				toast({
 					title: 'Error',
-					description: response.statusText,
+					description: response.message || 'Something went wrong',
 					variant: 'destructive',
 				})
 			}
@@ -106,7 +106,7 @@ const CourseForm = () => {
 						id='price'
 						type='number'
 						placeholder='1000'
-						value={price}
+						value={price || ''}
 						onChange={(e) => setPrice(Number(e.target.value))}
 					/>
 				</div>

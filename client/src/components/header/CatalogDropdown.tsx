@@ -8,13 +8,16 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { mobileNavOpenAtom } from '@/lib/atoms'
 import { TriangleDownIcon } from '@radix-ui/react-icons'
 import clsx from 'clsx'
+import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { useState } from 'react'
 
 const CatalogDropdown = () => {
 	const [open, setOpen] = useState<boolean>(false)
+	const setMobileNavOpen = useSetAtom(mobileNavOpenAtom)
 
 	return (
 		<DropdownMenu onOpenChange={setOpen}>
@@ -36,13 +39,16 @@ const CatalogDropdown = () => {
 			<DropdownMenuContent className='w-[180px] rounded-xl p-2'>
 				<DropdownMenuLabel>Explore Our Catalog</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<Link href={'/courses/web-dev'}>
+				<Link
+					href={'/courses/web-dev'}
+					onClick={() => setMobileNavOpen(false)}
+				>
 					<DropdownMenuItem>Web Development</DropdownMenuItem>
 				</Link>
 				<DropdownMenuItem>Android Development</DropdownMenuItem>
 				<DropdownMenuItem>Artificial Intelligence</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<Link href={'/courses'}>
+				<Link href={'/courses'} onClick={() => setMobileNavOpen(false)}>
 					<DropdownMenuItem>Explore All</DropdownMenuItem>
 				</Link>
 			</DropdownMenuContent>
