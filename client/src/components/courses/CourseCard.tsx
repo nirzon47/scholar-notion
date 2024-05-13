@@ -30,9 +30,12 @@ const CourseCard = ({ course }: { course: CourseType }) => {
 					<p className='font-bold'>Price: ₹{course.price}</p>
 					<p className='font-bold'>Enrolled: {course.students.length}</p>
 				</div>
-				<Link href={`/teacher/your-courses/${course._id}`}>
-					<Button className='w-full'>Buy</Button>
-				</Link>
+				<div className='grid grid-cols-2 gap-4'>
+					<Button className='w-full'>Buy Now</Button>
+					<Button className='w-full' variant='outline'>
+						Add to Cart
+					</Button>
+				</div>
 			</CardContent>
 		</Card>
 	)
