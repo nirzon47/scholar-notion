@@ -5,6 +5,7 @@ import { useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { mobileNavOpenAtom } from '@/lib/atoms'
+import CatalogDropdown from './CatalogDropdown'
 
 const navItems = [
 	{ name: 'Home', path: '' },
@@ -41,23 +42,7 @@ const NavigationLinks = () => {
 							</li>
 						)
 					} else {
-						return (
-							<li
-								key={item.name}
-								className={
-									path[1] === item.path
-										? 'font-medium text-primary'
-										: 'text-white'
-								}
-							>
-								<div className='group flex cursor-pointer items-center gap-1'>
-									<p className='duration-150 group-hover:text-primary'>
-										{item.name}
-									</p>
-									<TriangleDownIcon className='duration-150 group-hover:-rotate-90 group-hover:text-primary' />
-								</div>
-							</li>
-						)
+						return <CatalogDropdown key={item.name} />
 					}
 				})}
 			</ul>

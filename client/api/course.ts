@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// Get course by ID
 const getSpecificCourse = async (id: string) => {
 	try {
 		const { data } = await axios.get(
@@ -12,4 +13,17 @@ const getSpecificCourse = async (id: string) => {
 	}
 }
 
-export const courseAPI = { getSpecificCourse }
+// Get all courses
+const getAllCourses = async () => {
+	try {
+		const { data } = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/course`,
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const courseAPI = { getSpecificCourse, getAllCourses }
