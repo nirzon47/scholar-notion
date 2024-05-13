@@ -21,8 +21,12 @@ courseRoutes.get('/', async (c) => {
 // Find courses by tag
 courseRoutes.get('/tag/:tag', async (c) => {
 	const tag = c.req.param('tag')
-	const courses = await courseModel.find({ tags: { $in: [tag] } })
-	return c.json({ ok: true, courses }, 200)
+	const courses = await courseModel.find()
+
+	const filteredCourses = courses.filter((course) =>
+		course.tags.toLowerCase().includes(tag.toLowerCase())
+	)
+	return c.json({ ok: true, courses: filteredCourses }, 200)
 })
 
 export default courseRoutes

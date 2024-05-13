@@ -36,7 +36,9 @@ const CatalogDropdown = () => {
 			<DropdownMenuContent className='w-[180px] rounded-xl p-2'>
 				<DropdownMenuLabel>Explore Our Catalog</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem>Web Development</DropdownMenuItem>
+				<Link href={'/courses/web-dev'}>
+					<DropdownMenuItem>Web Development</DropdownMenuItem>
+				</Link>
 				<DropdownMenuItem>Android Development</DropdownMenuItem>
 				<DropdownMenuItem>Artificial Intelligence</DropdownMenuItem>
 				<DropdownMenuSeparator />
