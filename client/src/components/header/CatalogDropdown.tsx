@@ -45,8 +45,18 @@ const CatalogDropdown = () => {
 				>
 					<DropdownMenuItem>Web Development</DropdownMenuItem>
 				</Link>
-				<DropdownMenuItem>Android Development</DropdownMenuItem>
-				<DropdownMenuItem>Artificial Intelligence</DropdownMenuItem>
+				<Link
+					href={'/courses/android'}
+					onClick={() => setMobileNavOpen(false)}
+				>
+					<DropdownMenuItem>Android Development</DropdownMenuItem>
+				</Link>
+				<Link
+					href={'/courses/ai-ml'}
+					onClick={() => setMobileNavOpen(false)}
+				>
+					<DropdownMenuItem>Artificial Intelligence</DropdownMenuItem>
+				</Link>
 				<DropdownMenuSeparator />
 				<Link href={'/courses'} onClick={() => setMobileNavOpen(false)}>
 					<DropdownMenuItem>Explore All</DropdownMenuItem>

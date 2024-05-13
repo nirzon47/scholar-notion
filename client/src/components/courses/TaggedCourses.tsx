@@ -4,12 +4,15 @@ import { useCallback, useEffect, useState } from 'react'
 import { courseAPI } from '../../../api/course'
 import { useToast } from '../ui/use-toast'
 import CourseCard from './CourseCard'
+import Loading from '../Loading'
 
 const TaggedCourses = ({ tag }: { tag: string }) => {
 	const [courses, setCourses] = useState([])
+	const [loading, setLoading] = useState(false)
 	const { toast } = useToast()
 
 	const getCourses = useCallback(async () => {
+		setLoading(true)
 		const response = await courseAPI.getCourseByTag(tag)
 
 		if (response.ok) {
@@ -21,6 +24,8 @@ const TaggedCourses = ({ tag }: { tag: string }) => {
 				variant: 'destructive',
 			})
 		}
+
+		setLoading(false)
 	}, [toast, tag])
 
 	useEffect(() => {
@@ -29,7 +34,10 @@ const TaggedCourses = ({ tag }: { tag: string }) => {
 
 	return (
 		<main>
-			{courses && courses.length === 0 && <p>No courses found</p>}
+			{loading && <Loading />}
+			{!loading && courses && courses.length === 0 && (
+				<div className='text-center'>No courses found</div>
+			)}
 			<div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
 				{courses &&
 					courses.length > 0 &&

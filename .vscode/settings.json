@@ -14,5 +14,5 @@
 		"**/next-env.d.ts": true,
 		"**/postcss.config.mjs": true
 	},
-	"cSpell.words": ["Arlecchino"]
+	"cSpell.words": ["AIML", "Arlecchino"]
 }
