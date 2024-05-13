@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { courseModel } from '../models/course.mode'
+import { courseModel } from '../models/course.model'
 
 const courseRoutes = new Hono()
 

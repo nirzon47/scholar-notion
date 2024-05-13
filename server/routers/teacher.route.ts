@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { jwt } from 'hono/jwt'
-import { courseModel } from '../models/course.mode'
+import { courseModel } from '../models/course.model'
 import { z } from 'zod'
 import { zValidator } from '@hono/zod-validator'
 
