@@ -33,6 +33,7 @@ const AuthSection = ({
 }) => {
 	const router = useRouter()
 	const [decoded, setDecoded] = useState<any>(null)
+	const [search, setSearch] = useState<string>('')
 
 	// Take token from Jotai
 	const token = useAtomValue(tokenAtom)
@@ -41,7 +42,9 @@ const AuthSection = ({
 	const handleFormSubmission = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		setShowSearch(!showSearch)
+		router.push(`/courses/${search}`)
+
+		setSearch('')
 	}
 
 	useEffect(() => {
@@ -97,11 +100,14 @@ const AuthSection = ({
 						id='search'
 						placeholder='Search'
 						className='h-full w-48 rounded-full border bg-black bg-opacity-20 pl-4 pr-10 placeholder:text-zinc-300 focus:outline-none md:w-80'
+						onChange={(e) => setSearch(e.target.value)}
+						value={search}
 					/>
 				</motion.div>
 				<button
-					type='submit'
-					className='absolute right-0 top-0 grid h-9 w-9 cursor-pointer place-content-center rounded-full border-border bg-black bg-opacity-20 duration-150 hover:bg-opacity-40 '
+					className='absolute right-0 top-0 grid h-9 w-9 cursor-pointer place-content-center rounded-full border-border bg-black bg-opacity-20 duration-150 hover:bg-opacity-40'
+					onClick={() => setShowSearch(!showSearch)}
+					type='button'
 				>
 					<MagnifyingGlassIcon />
 				</button>
