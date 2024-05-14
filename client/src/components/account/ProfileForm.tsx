@@ -131,7 +131,6 @@ const ProfileForm = () => {
 			</Label>
 			<Textarea
 				id={'about'}
-				maxLength={150}
 				value={about}
 				placeholder='Tell us something about yourself'
 				onChange={(e) => setAbout(e.target.value)}

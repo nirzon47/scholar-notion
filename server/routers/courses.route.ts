@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { courseModel } from '../models/course.model'
+import { profileModel } from '../models/profile.model'
 
 const courseRoutes = new Hono()
 
@@ -7,7 +8,22 @@ const courseRoutes = new Hono()
 courseRoutes.get('/:id', async (c) => {
 	const id = c.req.param('id')
 
-	const course = await courseModel.findOne({ _id: id })
+	const course = await courseModel
+		.findOne({ _id: id })
+		.populate('students', 'name _id email')
+		.populate(
+			'instructor',
+			'-password -tokens -courses -courseProgress -approved'
+		)
+
+	const profile = await profileModel
+		.findOne({ user: course?.instructor })
+		.select('-contactNumber')
+
+	if (course && course.instructor) {
+		// @ts-ignore
+		course.instructor.profile = profile
+	}
 
 	return c.json({ ok: true, course }, 200)
 })

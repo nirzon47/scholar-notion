@@ -14,4 +14,13 @@ export interface CourseType {
 	price: number
 	thumbnail: string
 	students: Array<string>
+	instructor: instructorType
+}
+
+interface instructorType {
+	_id: string
+	name: string
+	email: string
+	contactNumber: string
+	profile: any
 }

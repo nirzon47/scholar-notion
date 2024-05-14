@@ -4,10 +4,16 @@ import { Hash } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const CourseCard = ({ course }: { course: CourseType }) => {
+	const router = useRouter()
+
 	return (
-		<Card>
+		<Card
+			className='cursor-pointer duration-150 hover:scale-[1.0125]'
+			onClick={() => router.push(`/course/${course._id}`)}
+		>
 			<Image
 				src={course.thumbnail || '/placeholder.svg'}
 				alt={course.name}
