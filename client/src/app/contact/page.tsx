@@ -1,6 +1,5 @@
 import GradientText from '@/components/GradientText'
 import AboutContact from '@/components/about/AboutContact'
-import { Button } from '@/components/ui/button'
 import {
 	Card,
 	CardContent,
@@ -8,13 +7,20 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
+import Image from 'next/image'
 
 const Contact = () => {
 	return (
-		<div className='grid min-h-[calc(100vh-3.5rem)] place-content-center py-12'>
+		<div className='relative grid min-h-[calc(100vh-3.5rem)] place-content-center py-12'>
+			<Image
+				src={'/contact-blob.svg'}
+				alt='blob'
+				width={1000}
+				height={1000}
+				quality={100}
+				className='absolute top-0 -z-10 h-full w-full object-cover object-center'
+			/>
 			<h1 className='mb-8 text-center text-2xl font-bold md:text-3xl'>
 				We would love to <GradientText text={'hear from you'} />
 			</h1>
