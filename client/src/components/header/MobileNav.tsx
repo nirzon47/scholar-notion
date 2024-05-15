@@ -26,7 +26,7 @@ const MobileNav = () => {
 
 			{open && (
 				<motion.div
-					className='fixed right-0 top-14 z-50 flex h-screen w-screen flex-col bg-white p-4 dark:bg-black'
+					className='fixed right-0 top-14 z-50 flex h-screen w-screen flex-col bg-zinc-400 p-4 dark:bg-black'
 					initial={{ x: -500 }}
 					animate={{ x: 0 }}
 					transition={{ duration: 0.1 }}

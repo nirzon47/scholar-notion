@@ -24,7 +24,7 @@ export default function RootLayout({
 			className={`${GeistSans.variable} ${GeistMono.variable}`}
 			suppressHydrationWarning
 		>
-			<body className='font-sans'>
+			<body className='overflow-x-hidden font-sans'>
 				<ThemeProvider defaultTheme='system' attribute='class'>
 					<Provider>
 						<div className='relative flex min-h-screen w-screen flex-col '>

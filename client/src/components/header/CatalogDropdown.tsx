@@ -24,12 +24,12 @@ const CatalogDropdown = () => {
 			<DropdownMenuTrigger>
 				<li>
 					<span className='group flex cursor-pointer items-center gap-1'>
-						<span className='block duration-150 group-hover:text-primary'>
+						<span className='block text-white duration-150 group-hover:text-primary'>
 							Catalog
 						</span>
 						<TriangleDownIcon
 							className={clsx(
-								'duration-150 group-hover:text-primary',
+								'text-white duration-150 group-hover:text-primary',
 								open && '-rotate-90',
 							)}
 						/>
