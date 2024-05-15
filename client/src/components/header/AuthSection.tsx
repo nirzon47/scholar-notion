@@ -11,6 +11,8 @@ import { verifyToken } from '@/lib/jwt'
 import ProfileDropdown from './ProfileDropdown'
 import { tokenAtom } from '@/lib/atoms'
 import { useEffect, useState } from 'react'
+import { ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
 
 // Framer motion variants for search bar
 const variants = {
@@ -115,7 +117,17 @@ const AuthSection = ({
 
 			{
 				/* Profile dropdown */
-				decoded !== null && <ProfileDropdown user={decoded} />
+				decoded !== null && (
+					<>
+						<Link
+							href={'/cart'}
+							className='grid h-9 w-9 cursor-pointer place-content-center rounded-full bg-black bg-opacity-20 duration-150 hover:bg-opacity-40'
+						>
+							<ShoppingCart className='h-4 w-4' />
+						</Link>
+						<ProfileDropdown user={decoded} />
+					</>
+				)
 			}
 		</div>
 	)
