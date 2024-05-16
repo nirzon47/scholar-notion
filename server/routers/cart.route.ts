@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { jwt } from 'hono/jwt'
 import { cartModel } from '../models/cart.model'
 import { courseModel } from '../models/course.model'
+import { orderModel } from '../models/order.model'
 
 const cartRoutes = new Hono()
 
@@ -28,9 +29,14 @@ cartRoutes.post('/:id', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
 
 	// If the course is already in the cart, return error
 	let cart = await cartModel.findOne({ user: token._id })
-
 	if (cart?.courses.includes(id as any)) {
 		return c.json({ ok: false, message: 'Course already in cart' }, 200)
+	}
+
+	// If the user already bought the course, return error
+	const order = await orderModel.findOne({ user: token._id, courses: id })
+	if (order) {
+		return c.json({ ok: false, message: 'Course already purchased' }, 200)
 	}
 
 	// If the course is not in the cart, create it

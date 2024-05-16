@@ -60,6 +60,15 @@ orderRoutes.post(
 			return c.json({ ok: false, message: 'Course not found' }, 404)
 		}
 
+		// If the user already bought the course, return error
+		const orderExists = await orderModel.findOne({
+			user: token._id,
+			courses: id,
+		})
+		if (orderExists) {
+			return c.json({ ok: false, message: 'Course already purchased' }, 200)
+		}
+
 		const orderObject = {
 			user: token._id,
 			courses: [course._id],
