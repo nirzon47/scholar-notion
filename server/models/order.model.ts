@@ -5,24 +5,24 @@ const orderSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'users',
 	},
-	orders: [
-		{
-			courses: {
-				type: [Schema.Types.ObjectId],
-				ref: 'course',
-			},
-			created: {
-				type: Date,
-				default: Date.now,
-			},
-			status: {
-				type: String,
-				default: 'pending',
-				enum: ['pending', 'completed', 'cancelled'],
-			},
-			paymentId: String,
-		},
-	],
+	courses: {
+		type: [Schema.Types.ObjectId],
+		ref: 'course',
+	},
+	created: {
+		type: Date,
+		default: Date.now(),
+	},
+	status: {
+		type: String,
+		default: 'pending',
+		enum: ['pending', 'completed', 'cancelled'],
+	},
+	total: {
+		type: Number,
+		default: 0,
+	},
+	paymentId: String,
 })
 
 export const orderModel = model('order', orderSchema)
