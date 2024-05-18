@@ -41,11 +41,17 @@ orderRoutes.post(
 			courses: cart?.courses,
 			total,
 			paymentId: razorpayOrder.id,
-			status: 'completed',
+			status: 'pending',
 		}
 
 		// Create order
 		const order = await orderModel.create(orderObject)
+
+		// Update courses
+		await courseModel.updateMany(
+			{ _id: { $in: cart?.courses } },
+			{ $push: { students: token._id } }
+		)
 
 		// Delete cart
 		await cartModel.deleteMany({ user: token._id })
@@ -53,6 +59,26 @@ orderRoutes.post(
 		return c.json({ ok: true, message: 'Order created successfully', order })
 	}
 )
+
+// Verify payment
+orderRoutes.post('/verify', async (c) => {
+	const body = await c.req.json()
+	const paymentId = body.razorpay_payment_id
+	const id = body.id
+
+	await orderModel.findOneAndUpdate(
+		{ _id: id },
+		{
+			$set: {
+				paymentId,
+				status: 'completed',
+			},
+		},
+		{ new: true }
+	)
+
+	return c.json({ ok: true, message: 'Payment verified successfully' })
+})
 
 // Buy now
 orderRoutes.post(
@@ -92,10 +118,14 @@ orderRoutes.post(
 			courses: [course._id],
 			total: course.price,
 			paymentId: razorpayOrder.id,
-			status: 'completed',
+			status: 'pending',
 		}
 
 		const order = await orderModel.create(orderObject)
+
+		// Update course students
+		course.students.push(token._id)
+		await course.save()
 
 		return c.json(
 			{ ok: true, message: 'Order created successfully', order },
