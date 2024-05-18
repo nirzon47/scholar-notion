@@ -42,7 +42,11 @@ const TaggedCourses = ({ tag }: { tag: string }) => {
 				{courses &&
 					courses.length > 0 &&
 					courses.map((course: any) => (
-						<CourseCard key={course._id} course={course} />
+						<CourseCard
+							key={course._id}
+							course={course}
+							isPurchased={false}
+						/>
 					))}
 			</div>
 		</main>

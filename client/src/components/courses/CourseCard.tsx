@@ -4,8 +4,15 @@ import { Hash } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CartButtons from './CartButtons'
+import clsx from 'clsx'
 
-const CourseCard = ({ course }: { course: CourseType }) => {
+const CourseCard = ({
+	course,
+	isPurchased,
+}: {
+	course: CourseType
+	isPurchased: boolean
+}) => {
 	return (
 		<Card>
 			<Image
@@ -30,11 +37,16 @@ const CourseCard = ({ course }: { course: CourseType }) => {
 				<p className='flex h-14 items-center gap-2 text-sm font-light text-zinc-800 dark:text-zinc-400 md:text-base'>
 					<Hash /> Tags: {course.tags.split(',').join(', ')}
 				</p>
-				<div className='flex items-center justify-between md:text-lg'>
+				<div
+					className={clsx(
+						'flex items-center justify-between md:text-lg',
+						isPurchased && 'hidden',
+					)}
+				>
 					<p className='font-bold'>Price: ₹{course.price}</p>
 					<p className='font-bold'>Enrolled: {course.students.length}</p>
 				</div>
-				<CartButtons id={course._id} />
+				{!isPurchased && <CartButtons id={course._id} />}
 			</CardContent>
 		</Card>
 	)

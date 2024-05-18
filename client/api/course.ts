@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 // Get course by ID
 const getSpecificCourse = async (id: string) => {
@@ -39,4 +40,30 @@ const getCourseByTag = async (tag: string) => {
 	}
 }
 
-export const courseAPI = { getSpecificCourse, getAllCourses, getCourseByTag }
+// Get purchased courses
+const getPurchasedCourses = async () => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/course/purchased`,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const courseAPI = {
+	getSpecificCourse,
+	getAllCourses,
+	getCourseByTag,
+	getPurchasedCourses,
+}
