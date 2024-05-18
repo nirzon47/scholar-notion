@@ -3,6 +3,7 @@ import { jwt } from 'hono/jwt'
 import { courseModel } from '../models/course.model'
 import { orderModel } from '../models/order.model'
 import { cartModel } from '../models/cart.model'
+import { razorpayOrderType, razorpayPayment } from '../config/payment'
 
 const orderRoutes = new Hono()
 
@@ -22,13 +23,25 @@ orderRoutes.post(
 			.findOne({ user: token._id })
 			.populate('courses')
 
+		// If the cart is empty, return error
+		if (!cart || cart?.courses.length === 0) {
+			return c.json({ ok: false, message: 'Cart is empty' }, 400)
+		}
+
 		// @ts-ignore Data is being populated, so total can be calculated
 		const total = cart?.courses.reduce((acc, course) => acc + course.price, 0)
+
+		// Razorpay
+		const razorpayOrder: razorpayOrderType | any = await razorpayPayment(
+			total as number
+		)
 
 		const orderObject = {
 			user: token._id,
 			courses: cart?.courses,
 			total,
+			paymentId: razorpayOrder.id,
+			status: 'completed',
 		}
 
 		// Create order
@@ -69,10 +82,17 @@ orderRoutes.post(
 			return c.json({ ok: false, message: 'Course already purchased' }, 200)
 		}
 
+		// Razorpay
+		const razorpayOrder: razorpayOrderType | any = await razorpayPayment(
+			course.price as number
+		)
+
 		const orderObject = {
 			user: token._id,
 			courses: [course._id],
 			total: course.price,
+			paymentId: razorpayOrder.id,
+			status: 'completed',
 		}
 
 		const order = await orderModel.create(orderObject)
