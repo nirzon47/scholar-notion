@@ -7,7 +7,7 @@ export interface TabType {
 }
 
 export interface CourseType {
-	_id: number
+	_id: string
 	name: string
 	desc: string
 	tags: string

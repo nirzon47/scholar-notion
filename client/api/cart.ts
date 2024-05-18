@@ -22,4 +22,23 @@ const getCart = async () => {
 	}
 }
 
-export const cartAPI = { getCart }
+const addToCart = async (id: string) => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.post(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/cart/${id}`,
+			null,
+			{
+				headers: { Authorization },
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const cartAPI = { getCart, addToCart }

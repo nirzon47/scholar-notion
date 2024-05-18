@@ -2,18 +2,12 @@ import { CourseType } from '@/lib/types'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Hash } from 'lucide-react'
 import Image from 'next/image'
-import { Button } from '../ui/button'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import CartButtons from './CartButtons'
 
 const CourseCard = ({ course }: { course: CourseType }) => {
-	const router = useRouter()
-
 	return (
-		<Card
-			className='cursor-pointer duration-150 hover:scale-[1.0125]'
-			onClick={() => router.push(`/course/${course._id}`)}
-		>
+		<Card>
 			<Image
 				src={course.thumbnail || '/placeholder.svg'}
 				alt={course.name}
@@ -23,7 +17,11 @@ const CourseCard = ({ course }: { course: CourseType }) => {
 				className='h-40 w-full rounded-tl-xl rounded-tr-xl object-cover object-center'
 			/>
 			<CardHeader>
-				<CardTitle className='text-xl md:text-2xl'>{course.name}</CardTitle>
+				<Link href={`/course/${course._id}`}>
+					<CardTitle className='text-xl underline underline-offset-4 duration-150 hover:text-primary md:text-2xl'>
+						{course.name}
+					</CardTitle>
+				</Link>
 			</CardHeader>
 			<CardContent className='grid gap-4'>
 				<p className='h-24 text-sm text-zinc-900 dark:text-zinc-300 md:text-base'>
@@ -36,12 +34,7 @@ const CourseCard = ({ course }: { course: CourseType }) => {
 					<p className='font-bold'>Price: ₹{course.price}</p>
 					<p className='font-bold'>Enrolled: {course.students.length}</p>
 				</div>
-				<div className='grid grid-cols-2 gap-4'>
-					<Button className='w-full'>Buy Now</Button>
-					<Button className='w-full' variant='outline'>
-						Add to Cart
-					</Button>
-				</div>
+				<CartButtons id={course._id} />
 			</CardContent>
 		</Card>
 	)

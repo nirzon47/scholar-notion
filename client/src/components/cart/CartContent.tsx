@@ -9,6 +9,7 @@ import { useToast } from '../ui/use-toast'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import Loading from '../Loading'
+import { orderAPI } from '../../../api/order'
 
 const CartContent = () => {
 	const [cart, setCart] = useState<any>()
@@ -40,6 +41,57 @@ const CartContent = () => {
 		setLoading(false)
 	}, [toast])
 
+	const handleCheckout = async () => {
+		const response = await orderAPI.buyCart()
+
+		if (response.ok) {
+			// Payment options
+			const options = {
+				key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+				amount: response.order.total * 100,
+				currency: 'INR',
+				name: 'ScholarNotion',
+				description: 'Course Purchase',
+				image: '/logo.png',
+				order_id: response.id,
+				handler: async (res: any) => {
+					const id = response.order._id
+
+					await orderAPI.verifyPayment(id, res.razorpay_payment_id)
+
+					toast({
+						title: 'Success',
+						description: 'Course purchased successfully',
+					})
+
+					setCart([])
+					setTotal(0)
+				},
+			}
+
+			// @ts-ignore
+			const paymentObject = new window.Razorpay(options)
+
+			// Handles payment errors
+			paymentObject.on('payment.failed', () => {
+				toast({
+					title: 'Error',
+					description: 'Something went wrong. Please try again.',
+					variant: 'destructive',
+				})
+			})
+
+			paymentObject.open()
+		} else {
+			toast({
+				title: 'Error',
+				description:
+					response.message || 'Something went wrong. Please try again.',
+				variant: 'destructive',
+			})
+		}
+	}
+
 	useEffect(() => {
 		getCart()
 	}, [getCart])
@@ -51,6 +103,7 @@ const CartContent = () => {
 					<Loading />
 				</div>
 			)}
+			{!cart && !loading && <p className='text-center'>Cart is empty</p>}
 			{!loading &&
 				cart &&
 				cart?.map((item: any) => (
@@ -90,7 +143,7 @@ const CartContent = () => {
 						<Link href={'/courses'}>
 							<Button variant='outline'>Continue Shopping</Button>
 						</Link>
-						<Button>Proceed to Checkout</Button>
+						<Button onClick={handleCheckout}>Proceed to Checkout</Button>
 					</div>
 				</CardFooter>
 			)}
