@@ -9,6 +9,7 @@ import {
 import CourseArray from './CourseArray'
 import { Check, ChevronRight, Clock, Hash } from 'lucide-react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 const OrderItem = ({ order }: { order: OrderType }) => {
 	const date = new Date(order.created)
@@ -33,9 +34,11 @@ const OrderItem = ({ order }: { order: OrderType }) => {
 			<CardContent className='grid gap-6'>
 				<div className='flex flex-wrap items-center justify-between gap-2'>
 					<CourseArray courses={order.courses} />
-					<Button className='flex items-center gap-2'>
-						View Details <ChevronRight size={16} />
-					</Button>
+					<Link href={`/account/order-history/${order._id}`}>
+						<Button className='flex items-center gap-2'>
+							View Details <ChevronRight size={16} />
+						</Button>
+					</Link>
 				</div>
 				<div className='flex justify-between'>
 					<p>Total: ₹{order.total}</p>

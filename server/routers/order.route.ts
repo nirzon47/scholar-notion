@@ -146,4 +146,19 @@ orderRoutes.get('/', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
 	return c.json({ ok: true, orders })
 })
 
+// Get a single order
+orderRoutes.get('/:id', jwt({ secret: process.env.JWT_SECRET! }), async (c) => {
+	const token = c.get('jwtPayload')
+	const id = c.req.param('id')
+
+	// If the user is not logged in, return error
+	if (!token) {
+		return c.json({ ok: false, message: 'Unauthorized' }, 401)
+	}
+
+	const order = await orderModel.findOne({ _id: id }).populate('courses')
+
+	return c.json({ ok: true, order })
+})
+
 export default orderRoutes

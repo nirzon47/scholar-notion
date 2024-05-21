@@ -80,4 +80,31 @@ const getOrders = async () => {
 	}
 }
 
-export const orderAPI = { buyNow, buyCart, verifyPayment, getOrders }
+// Get a specific
+const getSpecificOrder = async (id: string) => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/order/${id}`,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const orderAPI = {
+	buyNow,
+	buyCart,
+	verifyPayment,
+	getOrders,
+	getSpecificOrder,
+}
