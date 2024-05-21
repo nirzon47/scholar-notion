@@ -110,15 +110,25 @@ const Login = () => {
 					<Button type='submit' className='w-full'>
 						Sign in
 					</Button>
-					<p className='text-sm'>
-						New here?{' '}
-						<Link
-							href='/auth/signup'
-							className='text-primary hover:underline'
-						>
-							Sign up!
-						</Link>
-					</p>
+					<div className='flex justify-between'>
+						<p className='text-sm'>
+							New here?{' '}
+							<Link
+								href='/auth/signup'
+								className='text-primary hover:underline'
+							>
+								Sign up!
+							</Link>
+						</p>
+						<p className='text-sm'>
+							<Link
+								href='/auth/forgor'
+								className='text-primary hover:underline'
+							>
+								Forgot Password?
+							</Link>
+						</p>
+					</div>
 				</CardFooter>
 			</Card>
 		</form>
