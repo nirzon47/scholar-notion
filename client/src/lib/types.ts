@@ -14,13 +14,23 @@ export interface CourseType {
 	price: number
 	thumbnail: string
 	students: Array<string>
-	instructor: instructorType
+	instructor: InstructorType
 }
 
-interface instructorType {
+interface InstructorType {
 	_id: string
 	name: string
 	email: string
 	contactNumber: string
 	profile: any
+}
+
+export interface OrderType {
+	_id: string
+	courses: CourseType[]
+	paymentId: string
+	status: 'pending' | 'completed' | 'cancelled'
+	total: number
+	user: string
+	created: Date
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+// Buy now
 const buyNow = async (id: string) => {
 	try {
 		const token = Cookies.get('scholarToken')
@@ -20,6 +21,7 @@ const buyNow = async (id: string) => {
 	}
 }
 
+// Buy cart
 const buyCart = async () => {
 	try {
 		const token = Cookies.get('scholarToken')
@@ -41,6 +43,7 @@ const buyCart = async () => {
 	}
 }
 
+// Verify payment
 const verifyPayment = async (id: string, paymentId: string) => {
 	try {
 		const { data } = await axios.post(
@@ -56,4 +59,25 @@ const verifyPayment = async (id: string, paymentId: string) => {
 	}
 }
 
-export const orderAPI = { buyNow, buyCart, verifyPayment }
+// Get orders
+const getOrders = async () => {
+	try {
+		const token = Cookies.get('scholarToken')
+		const Authorization = `Bearer ${token}`
+
+		const { data } = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/order`,
+			{
+				headers: {
+					Authorization,
+				},
+			},
+		)
+
+		return data
+	} catch (error) {
+		return error
+	}
+}
+
+export const orderAPI = { buyNow, buyCart, verifyPayment, getOrders }

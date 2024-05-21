@@ -1,6 +1,6 @@
 import AccountNav from '@/components/account/AccountNav'
 
-const paths = ['Profile', 'Courses']
+const paths = ['Profile', 'Courses', 'Order History']
 
 const AccountLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
