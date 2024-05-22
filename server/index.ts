@@ -45,12 +45,10 @@ app.route('/course', courseRoutes)
 app.route('/cart', cartRoutes)
 app.route('/order', orderRoutes)
 
-Bun.serve({
+export default {
 	fetch: app.fetch,
 	tls: {
 		key: Bun.file('/home/ubuntu/selfsigned.key'),
 		cert: Bun.file('/home/ubuntu/selfsigned.crt'),
 	},
-})
-
-export default app
+}
