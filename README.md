@@ -1,12 +1,23 @@
 # Scholar Notion
 
-(The readme will be updated as the development progresses)
-
 ## [Hosted Link](https://scholar-notion.vercel.app/)
+
+## Features
+
+-  Fast and modern UI with robust backend
+-  Role based authentication
+-  Role based access control
+-  Server side rendering
+-  Razorpay payment gateway
+-  Search Functionality
+-  Responsive design
+-  Clean and minimal UI
+-  SSL certification
+-  AWS Hosting
 
 ## Tech Stack
 
-## General
+### General
 
 -  [TypeScript](https://www.typescriptlang.org/): Strongly typed JavaScript
 -  [Zod](https://zod.dev/): Schema validation library
