@@ -15,6 +15,8 @@
 -  SSL certification
 -  AWS Hosting
 
+## [API Documentation](https://documenter.getpostman.com/view/20186883/2sA3QpDDnf)
+
 ## Tech Stack
 
 ### General
